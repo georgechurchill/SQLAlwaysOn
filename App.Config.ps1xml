@@ -1,0 +1,39 @@
+<Config>
+    <Region Name="eu-west-1">
+    </Region>
+    <KMSARN Number="arn:aws:kms:eu-west-1:xxxxxxxxxxxxx:key/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">      <!-- Replace This. KMS Key ARN for decrypt-->
+    </KMSARN>
+    <VPC Name="vpc-xxxxxxxx">                                           <!-- Replace This. VPC ID, Must Exist Already                             -->
+        <SQLNode1SubNetID>subnet-xxxxxxxxxxxxxxxxx</SQLNode1SubNetID>   <!-- Replace This. Subnet ID for SQL Node 1, Must Exist Already           -->
+        <SQLNode2SubNetID>subnet-xxxxxxxxxxxxxxxxx</SQLNode2SubNetID>   <!-- Replace This. Subnet ID for SQL Node 2, Must Exist Already           -->
+        <SQLWitnessSubNetID>subnet-xxxxxxxx</SQLWitnessSubNetID>        <!-- Replace This. Subnet ID for SQL Node Witness, Must Exist Already     -->
+    </VPC>
+    <Instance Name="SQLNode1">
+        <Type>m5.2xlarge</Type>
+        <CPU>4</CPU>                                    <!-- CPU Optimsed -->
+        <KeyPair>"xxxxxxxxx"</KeyPair>                  <!-- Replace this -->
+        <Tag>SQLAlwaysOnNode1</Tag>
+        <SecurityGroups>sg-xxxxxxxx</SecurityGroups>    <!-- Not Working at the momemnt -->
+        <AMIID>ami-03855eb1640d145f6</AMIID>            <!-- Amazon may change this ID - it is default Windows Server 2019 Amazon Image, Ireland -->
+    </Instance>
+    <Instance Name="SQLNode2">
+        <Type>m5.2xlarge</Type>
+        <CPU>4</CPU>                                    <!-- CPU Optimsed -->
+        <KeyPair>"xxxxxxxxx"</KeyPair>                  <!-- Replace this -->
+        <Tag>SQLAlwaysOnNode2</Tag>
+        <SecurityGroups>sg-xxxxxxxx</SecurityGroups>    <!-- Not Working at the momemnt -->
+        <AMIID>ami-03855eb1640d145f6</AMIID>            <!-- Amazon May change this ID - it is default Windows Server 2019 Amazon Image, Ireland -->
+    </Instance>
+    <Instance Name="xxxxxxxxx">
+        <Type>t3.large</Type>
+        <CPU>4</CPU>                                    <!-- Not Working -->
+        <KeyPair>"xxxxxxxxx"</KeyPair>                  <!-- Replace this -->
+        <Tag>SQLAlwaysOnWitness</Tag>
+        <SecurityGroups>sg-xxxxxxxx</SecurityGroups>    <!-- Not Working at the momemnt -->
+        <AMIID>ami-03855eb1640d145f6</AMIID>            <!-- Amazon May change this ID - it is default Windows Server 2019 Amazon Image, Ireland -->
+    </Instance>
+    <DomainJoin Name="mydomain.xxx.xxx">                <!-- Replace this -->
+    </DomainJoin>
+</Config>
+
+
